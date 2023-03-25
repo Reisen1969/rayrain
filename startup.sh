@@ -20,4 +20,21 @@ EOT
 
 next_boot `cat themes/hugo-theme-next/VERSION`
 
-hugo server --port 1414
+
+if [[ $1 == 'all' ]]; then
+   hugo -D
+   cd ./public
+   git add .
+   git commit -s -m "update"
+   git push
+elif [[ $1 == '2' ]]; then
+ echo '2'
+elif [[ $1 == 's' ]]; then
+    hugo -D
+    hugo server --port 1414
+else
+  echo 'error'
+fi
+
+
+
